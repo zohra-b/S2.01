@@ -14,8 +14,12 @@ target/
 *.xml
 *.class
 *.idea
+pom.xml
 !**/src/main/**/out/
 !**/src/test/**/out/
+.gitignore
+!**/src/N1/N1Ex2/obsolete/
+
 
 ### Eclipse ###
 .apt_generated

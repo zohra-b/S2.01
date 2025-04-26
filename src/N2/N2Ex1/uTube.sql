@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `uTube`.`playlist` (
   PRIMARY KEY (`playlist_id`),
   INDEX `fk_playlist_users_idx` (`users_user_email` ASC) VISIBLE,
   CONSTRAINT `fk_playlist_users`
-    FOREIGN KEY (`users_user_email`)
+    FOREIGN KEY (`users_user_email`, `videos_video_id`)
     REFERENCES `uTube`.`users` (`user_email`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)

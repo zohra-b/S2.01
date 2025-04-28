@@ -113,7 +113,9 @@ CREATE TABLE `glasses` (
   `brands_brand_id` int NOT NULL,
   PRIMARY KEY (`glass_id`),
   KEY `fk_glasses_brands1_idx` (`brands_brand_id`),
-  CONSTRAINT `fk_glasses_brands1` FOREIGN KEY (`brands_brand_id`) REFERENCES `brands` (`brand_id`)
+  CONSTRAINT `fk_glasses_brands1` FOREIGN KEY (`brands_brand_id`) REFERENCES `brands` (`brand_id`),
+  KEY `fk_sales_sale_idx` (`sales_sale_id`),
+  CONSTRAINT `fk_sales_sale_id` FOREIGN KEY (`sales_sale_id`) REFERENCES `sales` (`sale_id`),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,10 +144,8 @@ CREATE TABLE `sales` (
   PRIMARY KEY (`sale_id`),
   KEY `fk_customer` (`bought_by`),
   KEY `fk_employee` (`sold_by`),
-  KEY `fk_glasses` (`sold_glasses`),
   CONSTRAINT `fk_customer` FOREIGN KEY (`bought_by`) REFERENCES `customers` (`customer_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_employee` FOREIGN KEY (`sold_by`) REFERENCES `employees` (`employee_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_glasses` FOREIGN KEY (`sold_glasses`) REFERENCES `glasses` (`glass_id`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
